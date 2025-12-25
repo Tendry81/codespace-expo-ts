@@ -1,0 +1,32 @@
+{
+  "name": "codespace-agent",
+  "version": "1.0.0",
+  "description": "Secure codespace agent with file operations and terminal access",
+  "main": "codespace-agent.js",
+  "scripts": {
+    "start": "CODESPACE_NAME=$(gh codespace view --json name -q '.name') && gh codespace ports visibility 3001:public -c \"$CODESPACE_NAME\" && node agent.js",
+    "dev": "CODESPACE_NAME=$(gh codespace view --json name -q '.name') && gh codespace ports visibility 3001:public -c \"$CODESPACE_NAME\" && nodemon agent.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "codespace",
+    "remote",
+    "terminal",
+    "websocket",
+    "file-api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "ws": "^8.14.2",
+    "node-pty": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
